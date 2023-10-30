@@ -4,7 +4,7 @@ Hi, My name is Amit, and I am currently pursuing master's in Northwest Missouri 
 
 [Link to Render](https://f23wb07doddamani.onrender.com)
 
-## Class: Gradee
+## Class: Grades
 ### Attributes
 * `grade`: `String` 
 * `gradeMarks`: `number`
