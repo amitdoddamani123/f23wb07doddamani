@@ -2,3 +2,15 @@ extends layout
 
 block content
   h1= title
+
+  - let results = [{grade: 'A',gradeMarks: 90,gradeCourse: 'Web Application'},{grade: 'B',gradeMarks: 75,gradeCourse: 'OOPS'},{grade: 'C',gradeMarks: 60, gradeCourse: 'ADB'}]
+
+  div(class="container-fluid")
+    div(class="row")
+      each item in results
+        div(class="col-sm-2")
+          p #{item.grade}
+          p #{item.gradeMarks}
+          p #{item.gradeCourse}
+
+
