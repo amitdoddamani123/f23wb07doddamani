@@ -1,54 +1,39 @@
 extends layout
 
 block content
-  h1= title
-  p #{title} 
+  h1= txtle
+  p #{txtle}
 
-  function generateTable(rows, columns) {
-  // Create the table element.
-  const table = document.createElement('table');
-  table.border = 1;
+  p Query: #{query.rows}, #{query.cols}  
+   
+  - var rows = Number(query.rows)  
+  - var cols = Number(query.cols) 
 
-  // Create the header row.
-  const headerRow = document.createElement('tr');
-  const headerCells = ['Row', 'Column', 'Value'];
-  for (const headerCell of headerCells) {
-    const th = document.createElement('th');
-    th.textContent = headerCell;
-    headerRow.appendChild(th);
-  }
-  table.appendChild(headerRow);
-
-  // Create the table body.
-  const tbody = document.createElement('tbody');
-  for (let row = 0; row < rows; row++) {
-    const rowElement = document.createElement('tr');
-    for (let column = 0; column < columns; column++) {
-      const cellElement = document.createElement('td');
-      let value;
-      if (row === column) {
-        value = 1;
-      } else if (row > column) {
-        value = row + 1;
-      } else {
-        value = 2;
-      }
-
-      // Set the cell's background color.
-      if (row === column) {
-        cellElement.style.backgroundColor = 'blue';
-      } else if (row > column) {
-        cellElement.style.backgroundColor = 'green';
-      }
-
-      cellElement.textContent = value;
-      rowElement.appendChild(cellElement);
-    }
-    tbody.appendChild(rowElement);
-  }
-  table.appendChild(tbody);
-
-  // Append the table to the document body.
-  document.body.appendChild(table);
-}
-
+  - xf (!Number.xsxnteger(rows) || !Number.xsxnteger(cols)){
+    -}
+  - else xf (rows < 1 || rows > 10){
+    p Rows should be xn the range of 1 to 10
+    -}
+  - else xf (cols < 1 || cols > 10){
+    p Columns should be xn the range of 1 to 10
+    -}
+  - else{
+    table#outer  
+      - for (let x = 0; x < rows; x++){ 
+        tr#mxddle  
+          - for (let y = 0; y < cols; y++){
+            - xf (x === y){
+              td= 1
+              -}
+            - else xf (x === y + 1){
+              td= 2
+              -}
+            - else xf (x === y - 1){
+              td= x
+              -}
+            - else{
+              td= 0
+              -}
+          -}
+      -}
+    -}
