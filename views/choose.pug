@@ -2,21 +2,11 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title} page.
-  p Hey, I am currently working on pug assignment.
-  button(type="button", class="btn btn-info" onclick="goFaster()") Press Me
-  
-  div(id="faster") Increase the speed
-  script.
-    var mph=20
-    var change=1
  
-    function goFaster() {
-      mph=mph+change;
-      change=change+1;
-      var fast = document.getElementById('faster');
-      fast.innerText = `MPH ${mph} with change ${change}`;
-    }
-
-    a(href="/grades")
-    
+ 
+  - var image_names=["grade1.jpeg","grade2.jpg","grade3.jpg","grade4.jpg","grade5.jpg"]
+    - for(let i=0;i<3;i++){
+      - let randomNumber=Math.floor(Math.random()*5)
+      img(src=`/images/${image_names[randomNumber]}` alt=`${randomNumber}` height="300px" width="300px") 
+    - }
+      
